@@ -3,7 +3,7 @@ class Pizza():
         self.name = name
         self.components = components
         self.recipe = recipe
-        self.toppings = toppings
+        self.toppings = toppings.split(",")
         self.price = price
 
 class User():
