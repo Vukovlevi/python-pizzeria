@@ -1,7 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from data import pizzak
-from order import order_window
+from add_order import order_window
 
 def confirm_quit():
     sure = messagebox.askyesno("Megerősítés", "Biztosan ki akar lépni?")
