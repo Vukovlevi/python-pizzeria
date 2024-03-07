@@ -1,5 +1,5 @@
 class Pizza():
-    def __init__(self, name, components, recipe, toppings, price, img="Img/placeholder.png") -> None:
+    def __init__(self, name, components, recipe, toppings, price, img="Img/placeholder.png"):
         self.name = name
         self.components = components
         self.recipe = recipe

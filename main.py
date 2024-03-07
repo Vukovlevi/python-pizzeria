@@ -14,10 +14,12 @@ window = tk.Tk()
 window.title("A fekete ingesek Pizzéria")
 window.geometry("1920x1080")
 
+pizzaPhotos = []
 for i in range(0,len(pizzak)):
     pizzaFrame=tk.Frame(window,borderwidth=2,relief="raised",padx=20)
-    pizzaPhoto=tk.PhotoImage(file="./Img/placeholder.png",width=200,height=100)
-    pizzaPhotoPlace=tk.Label(pizzaFrame,image=pizzaPhoto)
+    pizzaPhoto = tk.PhotoImage(file=pizzak[i].img)
+    pizzaPhotos.append(pizzaPhoto)
+    pizzaPhotoPlace=tk.Label(pizzaFrame,image=pizzaPhotos[i])
     pizzaPhotoPlace.pack()
     pizzaName=tk.Label(pizzaFrame,text=pizzak[i].name,pady=5)
     pizzaName.pack()
