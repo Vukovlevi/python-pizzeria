@@ -1,6 +1,7 @@
 import tkinter as tk
 from tkinter import messagebox
 from data import pizzak
+from order import order_window
 
 def confirm_quit():
     sure = messagebox.askyesno("Megerősítés", "Biztosan ki akar lépni?")
@@ -9,6 +10,10 @@ def confirm_quit():
 
 def about():
     messagebox.showinfo("Készítők", "Simon Zsombor\nSzabó-Vukov Levente")
+
+def add_order(pizza):
+    order_window(tk.Toplevel())
+    print(pizza.name)
 
 window = tk.Tk()
 window.title("A fekete ingesek Pizzéria")
@@ -27,20 +32,16 @@ for i, pizza in enumerate(pizzak):
     pizzaComp.pack()
     pizzaRecipe=tk.Label(pizzaFrame,text=pizza.recipe,pady=5)
     pizzaRecipe.pack()
-    pizzaOrder=tk.Button(pizzaFrame,text=f"Rendelés - {pizza.price}Ft", pady=5)
+    pizzaOrder=tk.Button(pizzaFrame,text=f"Rendelés - {pizza.price}Ft", pady=5, command=lambda p=pizza: add_order(p))
     pizzaOrder.pack()
     pizzaFrame.grid(row=0,column=i,padx=100,pady=50)
-
-order_menu = tk.Menu()
-order_menu.add_command(label="Rendelés hozzáadása")
-order_menu.add_command(label="Összes rendelés")
 
 general_menu = tk.Menu()
 general_menu.add_command(label="Névjegy", command=about)
 general_menu.add_command(label="Kilépés", command=confirm_quit)
 
 menu = tk.Menu(window)
-menu.add_cascade(label="Rendelés", menu=order_menu)
+menu.add_command(label="Összes rendelés")
 menu.add_cascade(label="Általános", menu=general_menu)
 menu.add_command(label="Kijelentkezés")
 
