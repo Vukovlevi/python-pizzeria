@@ -1,6 +1,8 @@
 import tkinter as tk
 from tkinter import messagebox
+from type import Order
 from data import pizzak
+from data import user as user_data
 from add_order import order_window
 
 def confirm_quit():
@@ -12,12 +14,15 @@ def about():
     messagebox.showinfo("Készítők", "Simon Zsombor\nSzabó-Vukov Levente")
 
 def add_order(pizza):
-    order_window(tk.Toplevel())
+    order = Order(pizza, user_data, 1)
+    order_window(tk.Toplevel(), order)
     print(pizza.name)
 
 window = tk.Tk()
 window.title("A fekete ingesek Pizzéria")
 window.geometry("1920x1080")
+
+user = user_data
 
 pizzaPhotos=[]
 for i, pizza in enumerate(pizzak):
