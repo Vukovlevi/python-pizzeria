@@ -2,6 +2,7 @@ import tkinter as tk
 from tkinter import messagebox
 from data import pizzak
 from add_order import order_window
+from show_order import show_order_window
 
 def confirm_quit():
     sure = messagebox.askyesno("Megerősítés", "Biztosan ki akar lépni?")
@@ -14,6 +15,8 @@ def about():
 def add_order(pizza):
     order_window(tk.Toplevel())
     print(pizza.name)
+def show_order():
+    show_order_window(tk.Toplevel())
 
 window = tk.Tk()
 window.title("A fekete ingesek Pizzéria")
@@ -41,7 +44,7 @@ general_menu.add_command(label="Névjegy", command=about)
 general_menu.add_command(label="Kilépés", command=confirm_quit)
 
 menu = tk.Menu(window)
-menu.add_command(label="Összes rendelés")
+menu.add_command(label="Összes rendelés",command=show_order)
 menu.add_cascade(label="Általános", menu=general_menu)
 menu.add_command(label="Kijelentkezés")
 
