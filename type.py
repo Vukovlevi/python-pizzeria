@@ -7,8 +7,10 @@ class Pizza():
         self.price = price
 
 class User():
-    def __init__(self, name, address, phone_number, email_address):
+    def __init__(self, name, username, password, address, phone_number, email_address):
         self.name = name
+        self.username = username
+        self.password = password
         self.address = address
         self.phone_number = phone_number,
         self.email_address = email_address
