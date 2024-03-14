@@ -13,9 +13,9 @@ def confirm_quit():
 def about():
     messagebox.showinfo("Készítők", "Simon Zsombor\nSzabó-Vukov Levente")
 
-def add_order(pizza):
+def add_order(pizza, photo):
     order = Order(pizza, user_data, 1)
-    order_window(tk.Toplevel(), order)
+    order_window(tk.Toplevel(), order, photo)
     print(pizza.name)
 
 window = tk.Tk()
@@ -37,7 +37,7 @@ for i, pizza in enumerate(pizzak):
     pizzaComp.pack()
     pizzaRecipe=tk.Label(pizzaFrame,text=pizza.recipe,pady=5)
     pizzaRecipe.pack()
-    pizzaOrder=tk.Button(pizzaFrame,text=f"Rendelés - {pizza.price}Ft", pady=5, command=lambda p=pizza: add_order(p))
+    pizzaOrder=tk.Button(pizzaFrame,text=f"Rendelés - {pizza.price}Ft", pady=5, command=lambda p=pizza, i=i: add_order(p, pizzaPhotos[i]))
     pizzaOrder.pack()
     pizzaFrame.grid(row=0,column=i,padx=100,pady=50)
 
