@@ -21,27 +21,27 @@ def order_window(window, order, photo):
     window.title("Rendelés hozzáadása")
     window.geometry("400x400")
     window.grab_set()
-
-    frame = tk.Frame(window)
+    window.config(bg="grey")
+    frame = tk.Frame(window,bg="#8C7473",relief="raised",borderwidth=2)
 
     pizzaPhotoPlace=tk.Label(frame,image=photo)
     pizzaPhotoPlace.pack()
 
-    pizzaName=tk.Label(frame,text=order.pizza.name,pady=5)
+    pizzaName=tk.Label(frame,text=order.pizza.name,pady=5,bg="#8C7473")
     pizzaName.pack()
 
-    pizzaComp=tk.Label(frame,text=order.pizza.components,pady=5)
+    pizzaComp=tk.Label(frame,text=order.pizza.components,pady=5,bg="#8C7473")
     pizzaComp.pack()
 
-    pizzaRecipe=tk.Label(frame,text=order.pizza.recipe,pady=5)
+    pizzaRecipe=tk.Label(frame,text=order.pizza.recipe,pady=5,bg="#8C7473")
     pizzaRecipe.pack()
 
-    pizzaOrder=tk.Label(frame,text=f"Rendelés - {order.pizza.price}Ft / db", pady=5)
+    pizzaOrder=tk.Label(frame,text=f"Rendelés - {order.pizza.price}Ft / db", pady=5,bg="#8C7473")
     pizzaOrder.pack()
 
     entryFrame = tk.Frame(frame)
 
-    count_label = tk.Label(entryFrame, text="Pizzák száma:")
+    count_label = tk.Label(entryFrame, text="Pizzák száma:",bg="#8C7473")
     count_label.pack(side=tk.LEFT)
 
     countEntry = tk.Entry(entryFrame)
