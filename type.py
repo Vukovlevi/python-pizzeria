@@ -21,3 +21,4 @@ class Order():
         self.pizza = pizza
         self.user = user
         self.price = pizza.price * count
+        self.toppings = []
