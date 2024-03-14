@@ -34,30 +34,29 @@ def order_window(window, order, photo):
     window.title("Rendelés hozzáadása")
     window.geometry("400x400")
     window.grab_set()
+    window.config(bg="grey")
+    
+    frame = tk.Frame(window,bg="#8C7473",relief="raised",borderwidth=2)
     current_toppings = []
-
-    frame = tk.Frame(window)
 
     pizzaPhotoPlace=tk.Label(frame,image=photo)
     pizzaPhotoPlace.pack()
 
-    pizzaName=tk.Label(frame,text=order.pizza.name,pady=5)
+    pizzaName=tk.Label(frame,text=order.pizza.name,pady=5,bg="#8C7473")
     pizzaName.pack()
 
-    pizzaComp=tk.Label(frame,text=order.pizza.components,pady=5)
+    pizzaComp=tk.Label(frame,text=order.pizza.components,pady=5,bg="#8C7473")
     pizzaComp.pack()
 
-    pizzaRecipe=tk.Label(frame,text=order.pizza.recipe,pady=5)
+    pizzaRecipe=tk.Label(frame,text=order.pizza.recipe,pady=5,bg="#8C7473")
     pizzaRecipe.pack()
 
-    pizzaOrder=tk.Label(frame,text=f"Rendelés - {order.pizza.price}Ft / db", pady=5)
+    pizzaOrder=tk.Label(frame,text=f"Rendelés - {order.pizza.price}Ft / db", pady=5,bg="#8C7473")
     pizzaOrder.pack()
 
     toppingFrame = tk.Frame(frame)
-    # int_vars = []
     for topping in order.pizza.toppings:
         int_var = tk.IntVar()
-        # int_vars.append(int_var)
         checkbox = tk.Checkbutton(toppingFrame, text=topping, variable=int_var, onvalue=1, offvalue=0, command=lambda topping=topping, toppings=current_toppings: add_topping(topping, toppings))
         checkbox.pack(side=tk.LEFT)
 
@@ -65,7 +64,7 @@ def order_window(window, order, photo):
 
     entryFrame = tk.Frame(frame)
 
-    count_label = tk.Label(entryFrame, text="Pizzák száma:")
+    count_label = tk.Label(entryFrame, text="Pizzák száma:",bg="#8C7473")
     count_label.pack(side=tk.LEFT)
 
     countEntry = tk.Entry(entryFrame)
