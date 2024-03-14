@@ -4,6 +4,7 @@ from data import pizzak
 from add_order import order_window
 from show_order import show_order_window
 
+
 def confirm_quit():
     sure = messagebox.askyesno("Megerősítés", "Biztosan ki akar lépni?")
     if sure:
@@ -16,7 +17,7 @@ def add_order(pizza):
     order_window(tk.Toplevel())
     print(pizza.name)
 def show_order():
-    show_order_window(tk.Toplevel())
+    show_order_window(tk.Toplevel(),pizzaPhotos)
 
 window = tk.Tk()
 window.title("A fekete ingesek Pizzéria")
