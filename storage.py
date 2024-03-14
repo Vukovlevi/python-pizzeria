@@ -4,4 +4,4 @@ from data import pizza1
 
 order1=Order(pizza1,user,4)
 order2=Order(pizza1,user,4)
-orders=[order1,order2]
+orders=[]
