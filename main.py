@@ -18,7 +18,6 @@ def about():
 def add_order(pizza, photo):
     order = Order(pizza, user_data, 1)
     order_window(tk.Toplevel(), order, photo)
-    print(pizza.name)
 def show_order():
     show_order_window(tk.Toplevel(),pizzaPhotos)
 

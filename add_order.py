@@ -54,10 +54,10 @@ def order_window(window, order, photo):
     pizzaOrder=tk.Label(frame,text=f"Rendelés - {order.pizza.price}Ft / db", pady=5,bg="#8C7473")
     pizzaOrder.pack()
 
-    toppingFrame = tk.Frame(frame)
+    toppingFrame = tk.Frame(frame,bg="#8C7473")
     for topping in order.pizza.toppings:
         int_var = tk.IntVar()
-        checkbox = tk.Checkbutton(toppingFrame, text=topping, variable=int_var, onvalue=1, offvalue=0, command=lambda topping=topping, toppings=current_toppings: add_topping(topping, toppings))
+        checkbox = tk.Checkbutton(toppingFrame, text=topping, variable=int_var, onvalue=1, offvalue=0, command=lambda topping=topping, toppings=current_toppings: add_topping(topping, toppings),bg="#8C7473")
         checkbox.pack(side=tk.LEFT)
 
     toppingFrame.pack()
