@@ -65,6 +65,7 @@ def order_window(window, order, photo, index):
     for topping in order.pizza.toppings:
         if topping in order.toppings:
             int_var = tk.IntVar(value=1)
+            current_toppings.append(topping)
         else:
             int_var = tk.IntVar()
         checkbox = tk.Checkbutton(toppingFrame, text=topping, variable=int_var, onvalue=1, offvalue=0, command=lambda topping=topping, toppings=current_toppings: add_topping(topping, toppings),bg="#8C7473")
