@@ -21,7 +21,7 @@ def show_order_window(window,photo):
     canvas.create_window((0, 0), window=holder)
 
     for i,rendelese in enumerate(orders):
-        rendelesFrame=tk.Frame(window,borderwidth=2,relief="raised",bg="#8C7473")
+        rendelesFrame=tk.Frame(holder,borderwidth=2,relief="raised",bg="#8C7473")
         rendelesPhotoPlace=tk.Label(rendelesFrame,image=photo[i],bg="#8C7473")
         rendelesPhotoPlace.pack()
         label1=tk.Label(rendelesFrame,text=rendelese.pizza.name,bg="#8C7473",font="bold")
