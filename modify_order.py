@@ -9,17 +9,28 @@ def add_topping(topping, toppings):
         toppings.remove(topping)
 
 def save_order(order, countEntry, window, toppings, index):
-    count = 0
+    count = order.count 
     try:
         count = int(countEntry.get()) 
     except:
         messagebox.showwarning("Mennyiség hiba", "Kérem egész számot adjon meg a pizzák darabdszámának!")
         window.grab_set()
+        countEntry.delete(0, tk.END)
+        countEntry.insert(0, count)
+        return
+
+    if count > 10:
+        messagebox.showwarning("Mennyiség hiba", "A pizzák száma nem lehet több 10-nél!")
+        window.grab_set()
+        countEntry.delete(0, tk.END)
+        countEntry.insert(0, order.count)
         return
 
     if count <= 0:
         messagebox.showwarning("Mennyiség hiba", "A pizzák száma nem lehet kevesebb 1-nél!")
         window.grab_set()
+        countEntry.delete(0, tk.END)
+        countEntry.insert(0, order.count)
         return
     
     if len(toppings) > 2:
@@ -33,11 +44,11 @@ def save_order(order, countEntry, window, toppings, index):
     order.price = order.pizza.price * count
     orders[index] = order
 
-    messagebox.showinfo("Siker", "Rendelés sikeresen hozzáadva!")
+    messagebox.showinfo("Siker", "Rendelés sikeresen módosítva!")
     window.destroy()
 
 def order_window(window, order, photo, index):
-    window.title("Rendelés hozzáadása")
+    window.title("Rendelés módosítása")
     window.geometry("400x400")
     window.grab_set()
     window.config(bg="grey")

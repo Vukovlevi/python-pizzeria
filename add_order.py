@@ -15,11 +15,19 @@ def add_order(order, countEntry, window, toppings):
     except:
         messagebox.showwarning("Mennyiség hiba", "Kérem egész számot adjon meg a pizzák darabdszámának!")
         window.grab_set()
+        countEntry.delete(0, tk.END)
         return
 
     if count <= 0:
         messagebox.showwarning("Mennyiség hiba", "A pizzák száma nem lehet kevesebb 1-nél!")
         window.grab_set()
+        countEntry.delete(0, tk.END)
+        return
+
+    if count > 10:
+        messagebox.showwarning("Mennyiség hiba", "A pizzák száma nem lehet több 10-nél!")
+        window.grab_set()
+        countEntry.delete(0, tk.END)
         return
     
     if len(toppings) > 2:
