@@ -7,6 +7,11 @@ def modify_order(window, order, photo, index):
     order_window(tk.Toplevel(), order, photo, index) 
 
 def show_order_window(window,photo):
+    def delete(i,frame):
+        orders.pop(i)
+        frame.grid_forget()
+
+
     window.title("Rendelések")
     window.geometry("400x700")
     window.config(bg="grey")
@@ -43,4 +48,7 @@ def show_order_window(window,photo):
         toppingFrame.pack()
         gomb1=tk.Button(rendelesFrame,text="Rendelés szerkesztése",pady=5, command=lambda o=rendelese, index=i: modify_order(window, o, photo[index], index))
         gomb1.pack()
+        gomb2=tk.Button(rendelesFrame,text="Rendelés törlése",pady=5,command=lambda frame=rendelesFrame,i=i: delete(i,frame))
+        gomb2.pack()
+
         rendelesFrame.grid(row=i,column=0,padx=100,pady=30)
