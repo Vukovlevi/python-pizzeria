@@ -18,7 +18,6 @@ def about():
 def add_order(pizza, photo):
     order = Order(pizza, user_data, 1)
     order_window(tk.Toplevel(), order, photo)
-    print(pizza.name)
 def show_order():
     show_order_window(tk.Toplevel(),pizzaPhotos)
 
@@ -30,16 +29,16 @@ user = user_data
 
 pizzaPhotos=[]
 for i, pizza in enumerate(pizzak):
-    pizzaFrame=tk.Frame(window,borderwidth=2,relief="raised",padx=20,bg="red")
+    pizzaFrame=tk.Frame(window,borderwidth=2,relief="raised",padx=20,bg="#8C7473")
     pizzaPhoto=tk.PhotoImage(file=pizza.img,width=200,height=100)
     pizzaPhotos.append(pizzaPhoto)
-    pizzaPhotoPlace=tk.Label(pizzaFrame,image=pizzaPhoto,bg="red")
+    pizzaPhotoPlace=tk.Label(pizzaFrame,image=pizzaPhoto,bg="#8C7473")
     pizzaPhotoPlace.pack()
-    pizzaName=tk.Label(pizzaFrame,text=pizza.name,pady=5,bg="red",font="bold")
+    pizzaName=tk.Label(pizzaFrame,text=pizza.name,pady=5,bg="#8C7473",font="bold")
     pizzaName.pack()
-    pizzaComp=tk.Label(pizzaFrame,text=pizza.components,pady=5,bg="red")
+    pizzaComp=tk.Label(pizzaFrame,text=pizza.components,pady=5,bg="#8C7473")
     pizzaComp.pack()
-    pizzaRecipe=tk.Label(pizzaFrame,text=pizza.recipe,pady=5,bg="red")
+    pizzaRecipe=tk.Label(pizzaFrame,text=pizza.recipe,pady=5,bg="#8C7473")
     pizzaRecipe.pack()
     pizzaOrder=tk.Button(pizzaFrame,text=f"Rendelés - {pizza.price}Ft", pady=5, command=lambda p=pizza, i=i: add_order(p, pizzaPhotos[i]), relief="groove")
     pizzaOrder.pack()
