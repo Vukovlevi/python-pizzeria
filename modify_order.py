@@ -8,7 +8,7 @@ def add_topping(topping, toppings):
     else:
         toppings.remove(topping)
 
-def add_order(order, countEntry, window, toppings):
+def save_order(order, countEntry, window, toppings, index):
     count = 0
     try:
         count = int(countEntry.get()) 
@@ -31,12 +31,12 @@ def add_order(order, countEntry, window, toppings):
 
     order.count = count
     order.price = order.pizza.price * count
-    orders.append(order)
+    orders[index] = order
 
     messagebox.showinfo("Siker", "Rendelés sikeresen hozzáadva!")
     window.destroy()
 
-def order_window(window, order, photo):
+def order_window(window, order, photo, index):
     window.title("Rendelés hozzáadása")
     window.geometry("400x400")
     window.grab_set()
@@ -63,8 +63,12 @@ def order_window(window, order, photo):
 
     toppingFrame = tk.Frame(frame,bg="#8C7473")
     for topping in order.pizza.toppings:
-        int_var = tk.IntVar()
+        if topping in order.toppings:
+            int_var = tk.IntVar(value=1)
+        else:
+            int_var = tk.IntVar()
         checkbox = tk.Checkbutton(toppingFrame, text=topping, variable=int_var, onvalue=1, offvalue=0, command=lambda topping=topping, toppings=current_toppings: add_topping(topping, toppings),bg="#8C7473")
+        checkbox.config(variable=int_var)
         checkbox.pack(side=tk.LEFT)
 
     toppingFrame.pack()
@@ -77,9 +81,11 @@ def order_window(window, order, photo):
     countEntry = tk.Entry(entryFrame)
     countEntry.pack(side=tk.RIGHT)
 
+    countEntry.insert(0, str(order.count))
+
     entryFrame.pack(pady=10)
 
-    button = tk.Button(frame, text="Rendelés hozzáadása", command=lambda: add_order(order, countEntry, window, current_toppings))
+    button = tk.Button(frame, text="Módosítás mentése", command=lambda: save_order(order, countEntry, window, current_toppings, index))
     button.pack()
 
     frame.pack()
