@@ -1,6 +1,10 @@
 from storage import orders
 import tkinter as tk
+from modify_order import order_window
 
+def modify_order(window, order, photo, index):
+    window.destroy()
+    order_window(tk.Toplevel(), order, photo, index) 
 
 def show_order_window(window,photo):
     window.title("Rendelések")
@@ -21,7 +25,7 @@ def show_order_window(window,photo):
     canvas.create_window((0, 0), window=holder)
 
     for i,rendelese in enumerate(orders):
-        rendelesFrame=tk.Frame(window,borderwidth=2,relief="raised",bg="#8C7473")
+        rendelesFrame=tk.Frame(holder,borderwidth=2,relief="raised",bg="#8C7473")
         rendelesPhotoPlace=tk.Label(rendelesFrame,image=photo[i],bg="#8C7473")
         rendelesPhotoPlace.pack()
         label1=tk.Label(rendelesFrame,text=rendelese.pizza.name,bg="#8C7473",font="bold")
@@ -37,7 +41,6 @@ def show_order_window(window,photo):
             label4=tk.Label(toppingFrame,text=rendelese.toppings[j],bg="#8C7473")
             label4.pack(side="left")
         toppingFrame.pack()
-        gomb1=tk.Button(rendelesFrame,text="Rendelés szerkesztése",pady=5)
+        gomb1=tk.Button(rendelesFrame,text="Rendelés szerkesztése",pady=5, command=lambda o=rendelese, index=i: modify_order(window, o, photo[index], index))
         gomb1.pack()
         rendelesFrame.grid(row=i,column=0,padx=100,pady=30)
-    w.grid(row=0,column=1,rowspan=len(orders))

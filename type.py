@@ -20,5 +20,6 @@ class Order():
     def __init__(self, pizza, user, count):
         self.pizza = pizza
         self.user = user
+        self.count = count
         self.price = pizza.price * count
         self.toppings = []
