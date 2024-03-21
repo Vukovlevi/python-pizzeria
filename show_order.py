@@ -1,5 +1,10 @@
 from storage import orders
 import tkinter as tk
+from modify_order import order_window
+
+def modify_order(window, order, photo, index):
+    window.destroy()
+    order_window(tk.Toplevel(), order, photo, index) 
 
 def show_order_window(window,photo):
     def delete(i,frame):
@@ -41,7 +46,7 @@ def show_order_window(window,photo):
             label4=tk.Label(toppingFrame,text=rendelese.toppings[j],bg="#8C7473")
             label4.pack(side="left")
         toppingFrame.pack()
-        gomb1=tk.Button(rendelesFrame,text="Rendelés szerkesztése",pady=5)
+        gomb1=tk.Button(rendelesFrame,text="Rendelés szerkesztése",pady=5, command=lambda o=rendelese, index=i: modify_order(window, o, photo[index], index))
         gomb1.pack()
         gomb2=tk.Button(rendelesFrame,text="Rendelés törlése",pady=5,command=lambda frame=rendelesFrame,i=i: delete(i,frame))
         gomb2.pack()
