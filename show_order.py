@@ -40,4 +40,3 @@ def show_order_window(window,photo):
         gomb1=tk.Button(rendelesFrame,text="Rendelés szerkesztése",pady=5)
         gomb1.pack()
         rendelesFrame.grid(row=i,column=0,padx=100,pady=30)
-    w.grid(row=0,column=1,rowspan=len(orders))
